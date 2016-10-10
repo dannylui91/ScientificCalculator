@@ -12,6 +12,17 @@
     android:gravity="center"
     tools:context="nyc.ac3.scientificcalculator.MainActivity">
 
+    <!--two text views, history and main screen -->
+    <TextView
+        android:id="@+id/history_view"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:textDirection="anyRtl"
+        android:gravity="right"
+        android:maxLines="1"
+        android:maxLength="21"
+        android:textSize="20dp"
+        android:background="#1000F00F"/>
     <TextView
         android:id="@+id/text_view"
         android:layout_width="350dp"
@@ -23,6 +34,7 @@
         android:textSize="30dp"
         android:background="#05000000" />
 
+    <!--Scientific part of calculator-->
     <RelativeLayout
         android:id="@+id/scientific_view"
         android:layout_width="wrap_content"
@@ -30,13 +42,13 @@
         android:background="#204b8df9">
 
         <Button
-            android:id="@+id/button_ceil"
+            android:id="@+id/button_factorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ceil"/>
+            android:text="!"/>
         <Button
             android:id="@+id/button_sqrt"
-            android:layout_toRightOf="@id/button_ceil"
+            android:layout_toRightOf="@id/button_factorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="√"/>
@@ -53,15 +65,15 @@
             android:layout_height="wrap_content"
             android:text="^"/>
         <Button
-            android:id="@+id/button_floor"
-            android:layout_below="@id/button_ceil"
+            android:id="@+id/button_mod"
+            android:layout_below="@id/button_factorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="floor"/>
+            android:text="%"/>
         <Button
             android:id="@+id/button_tan"
             android:layout_below="@id/button_sqrt"
-            android:layout_toRightOf="@id/button_floor"
+            android:layout_toRightOf="@id/button_mod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="tan"/>
@@ -78,10 +90,10 @@
             android:layout_toRightOf="@id/button_atan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="log10"/>
+            android:text="log₁₀" />
         <Button
             android:id="@+id/button_pi"
-            android:layout_below="@id/button_floor"
+            android:layout_below="@id/button_mod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="π"/>
@@ -105,7 +117,7 @@
             android:layout_toRightOf="@id/button_acos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="log2"/>
+            android:text="log₂" />
         <Button
             android:id="@+id/button_e"
             android:layout_below="@id/button_pi"
@@ -135,6 +147,7 @@
             android:text="ln"/>
     </RelativeLayout>
 
+    <!--Standard part of calculator-->
     <RelativeLayout
         android:id="@+id/normal_view"
         android:layout_width="wrap_content"
@@ -152,17 +165,17 @@
             android:layout_height="wrap_content"
             android:text=")"/>
         <Button
-            android:id="@+id/button_percent"
+            android:id="@+id/button10"
             android:layout_toRightOf="@id/button_paren_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="%"/>
+            android:text="Ans"/>
         <Button
             android:id="@+id/button_clear"
-            android:layout_toRightOf="@id/button_percent"
+            android:layout_toRightOf="@id/button10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="C"/>
+            android:text="AC"/>
         <Button
             android:id="@+id/button7"
             android:layout_below="@id/button_paren_left"
@@ -178,7 +191,7 @@
             android:text="8"/>
         <Button
             android:id="@+id/button9"
-            android:layout_below="@id/button_percent"
+            android:layout_below="@id/button10"
             android:layout_toRightOf="@id/button8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
