@@ -328,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    
+
     public void differentMethod() {
         System.out.println("maybe");
     }
@@ -339,5 +339,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void shouldHaveNoConflicts() {
         System.out.println("Same method name");
+    }
+
+    public void differentBranch() {
+        System.out.println("conflicts arised");
     }
 }
