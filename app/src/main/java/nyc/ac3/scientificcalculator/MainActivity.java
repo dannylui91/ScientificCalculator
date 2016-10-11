@@ -327,4 +327,11 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(str);
 
     }
+
+
+
+
+    public void differentMethod() {
+        System.out.println("maybe");
+    }
 }
