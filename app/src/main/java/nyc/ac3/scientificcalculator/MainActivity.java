@@ -319,4 +319,8 @@ public class MainActivity extends AppCompatActivity {
             }
         };
     }
+
+    public void MergeConflictMethod() {
+        System.out.println("will this cause merge conflict?");
+    }
 }
