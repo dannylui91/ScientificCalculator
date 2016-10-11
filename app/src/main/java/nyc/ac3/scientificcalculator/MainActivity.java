@@ -328,10 +328,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
+    
     public void differentMethod() {
         System.out.println("maybe");
+    }
+    public void SecondConflict() {
+        System.out.println("Conflict");
+
     }
 }
