@@ -322,5 +322,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void MergeConflictMethod() {
         System.out.println("will this cause merge conflict?");
+
+        String str = "word";
+        System.out.println(str);
+
     }
 }
