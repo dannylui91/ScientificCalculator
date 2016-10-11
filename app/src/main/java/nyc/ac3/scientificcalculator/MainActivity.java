@@ -327,4 +327,8 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(str);
 
     }
+
+    public void SecondConflict() {
+        System.out.println("Conflict");
+    }
 }
