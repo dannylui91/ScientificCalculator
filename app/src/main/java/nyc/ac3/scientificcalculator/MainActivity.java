@@ -336,4 +336,8 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Conflict");
 
     }
+
+    public void shouldHaveNoConflicts() {
+        System.out.println("Same method name");
+    }
 }
