@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     TextView historyView;
     Button clearButton;
+    private int leftParensCount;
+    private int rightParensCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         textView.setText("");
                         setHistoryView();
                         textView.append(button.getText().toString());
-                    }
-                    else
+                    } else
                         textView.append(button.getText().toString());
                 }
             });
@@ -73,11 +74,11 @@ public class MainActivity extends AppCompatActivity {
 //        if (isLandscape)
 //            maxButtons = 23
 
-        int  maxButtons = 23; //comment or delete this when you uncomment the above
+        int maxButtons = 23; //comment or delete this when you uncomment the above
 
         for (int i = 0; i < maxButtons; i++) {
             String buttonID = null;
-            switch(i){
+            switch (i) {
                 case 0:
                     buttonID = "button_divide";
                     break;
@@ -159,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                     clearButton.setText("CE");
                     if (textView.getText().toString().equals("Error"))
                         textView.setText("");
-                    if (!historyView.getText().toString().isEmpty() && !historyView.getText().toString().startsWith("Ans")){
+                    if (!historyView.getText().toString().isEmpty() && !historyView.getText().toString().startsWith("Ans")) {
                         System.out.println("DO THIS LINE");
                         String currentButton = button.getText().toString();
                         if (!currentButton.equals("+") && !currentButton.equals("×") && !currentButton.equals("÷")
@@ -168,8 +169,7 @@ public class MainActivity extends AppCompatActivity {
                             setHistoryView();
                             String operatorWithParen = addLeftParen(button.getText().toString());
                             textView.setText(operatorWithParen);
-                        }
-                        else {
+                        } else {
                             setHistoryView();
                             String operatorWithParen = addLeftParen(button.getText().toString());
                             textView.append(operatorWithParen);
@@ -302,14 +302,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String addRightParen(String s) {
-        if (s.contains("√") || s.contains("³√") || s.contains("sin")
-                || s.contains("cos") || s.contains("tan") || s.contains("sin⁻¹")
-                || s.contains("cos⁻¹") || s.contains("tan⁻¹") || s.contains("log₁₀")
-                || s.contains("log₂") || s.contains("ln"))
-            return s += ")";
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                leftParensCount++;
+            } else if (s.charAt(i) == ')') {
+                rightParensCount++;
+            }
+        }
+
+        if (leftParensCount != rightParensCount) {
+                s += ")";
+            }
         return s;
     }
-
 
 
     //using exp4j's custom operator creation
