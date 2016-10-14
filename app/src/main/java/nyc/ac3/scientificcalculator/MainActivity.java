@@ -16,19 +16,22 @@ public class MainActivity extends AppCompatActivity {
     private static double ans = 0;
     private static Operator factorial;
 
+
     TextView textView;
     TextView historyView;
     Button clearButton;
+    private int leftParensCount;
+    private int rightParensCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /* for when we switch from portrait to landscape uncomment this and delete the scientific part in xml portrait
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-            isLandscape = true;
-        else
-            isLandscape = false;*/
+//         TODO: for when we switch from portrait to landscape uncomment this and delete the scientific part in xml portrait
+//        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+//            isLandscape = true;
+//        else
+//            isLandscape = false;
 
         historyView = (TextView) findViewById(R.id.history_view);
         textView = (TextView) findViewById(R.id.text_view);
@@ -56,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         textView.setText("");
                         setHistoryView();
                         textView.append(button.getText().toString());
-                    }
-                    else
+                    } else
                         textView.append(button.getText().toString());
                 }
             });
@@ -66,18 +68,17 @@ public class MainActivity extends AppCompatActivity {
 
     //when every button except buttons 0->9 and Ans are pressed
     private void initOperationButtons() {
-        /*for when we switch from portrait to landscape
-          delete portrait's scientific part in the xml if you haven't and uncomment this
-        int maxButtons = 7;
-        if (isLandscape)
-            maxButtons = 23
-        */
+//        TODO: for when we switch from portrait to landscape
+//          delete portrait's scientific part in the xml if you haven't and uncomment this
+//        int maxButtons = 7;
+//        if (isLandscape)
+//            maxButtons = 23
 
-        int  maxButtons = 23; //comment or delete this when you uncomment the above
+        int maxButtons = 23; //comment or delete this when you uncomment the above
 
         for (int i = 0; i < maxButtons; i++) {
             String buttonID = null;
-            switch(i){
+            switch (i) {
                 case 0:
                     buttonID = "button_divide";
                     break;
@@ -159,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                     clearButton.setText("CE");
                     if (textView.getText().toString().equals("Error"))
                         textView.setText("");
-                    if (!historyView.getText().toString().isEmpty() && !historyView.getText().toString().startsWith("Ans")){
+                    if (!historyView.getText().toString().isEmpty() && !historyView.getText().toString().startsWith("Ans")) {
                         System.out.println("DO THIS LINE");
                         String currentButton = button.getText().toString();
                         if (!currentButton.equals("+") && !currentButton.equals("×") && !currentButton.equals("÷")
@@ -168,8 +169,7 @@ public class MainActivity extends AppCompatActivity {
                             setHistoryView();
                             String operatorWithParen = addLeftParen(button.getText().toString());
                             textView.setText(operatorWithParen);
-                        }
-                        else {
+                        } else {
                             setHistoryView();
                             String operatorWithParen = addLeftParen(button.getText().toString());
                             textView.append(operatorWithParen);
@@ -193,6 +193,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 isClearEntry = false;
                 clearButton.setText("AC");
+                String operatorWithParen = addRightParen(textView.getText().toString());
+                textView.setText(operatorWithParen);
                 String expression = textView.getText().toString();
                 historyView.setText(expression + "=");
                 expression = parseForCalculation(expression);
@@ -298,6 +300,22 @@ public class MainActivity extends AppCompatActivity {
             return s += "(";
         return s;
     }
+
+    private String addRightParen(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                leftParensCount++;
+            } else if (s.charAt(i) == ')') {
+                rightParensCount++;
+            }
+        }
+
+        if (leftParensCount != rightParensCount) {
+                s += ")";
+            }
+        return s;
+    }
+
 
     //using exp4j's custom operator creation
     private static void initFactorialOperator() {
