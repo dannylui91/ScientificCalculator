@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private static double ans = 0;
     private static Operator factorial;
 
+
     TextView textView;
     TextView historyView;
     Button clearButton;
@@ -24,11 +25,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /* for when we switch from portrait to landscape uncomment this and delete the scientific part in xml portrait
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-            isLandscape = true;
-        else
-            isLandscape = false;*/
+//         TODO: for when we switch from portrait to landscape uncomment this and delete the scientific part in xml portrait
+//        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+//            isLandscape = true;
+//        else
+//            isLandscape = false;
 
         historyView = (TextView) findViewById(R.id.history_view);
         textView = (TextView) findViewById(R.id.text_view);
@@ -66,12 +67,11 @@ public class MainActivity extends AppCompatActivity {
 
     //when every button except buttons 0->9 and Ans are pressed
     private void initOperationButtons() {
-        /*for when we switch from portrait to landscape
-          delete portrait's scientific part in the xml if you haven't and uncomment this
-        int maxButtons = 7;
-        if (isLandscape)
-            maxButtons = 23
-        */
+//        TODO: for when we switch from portrait to landscape
+//          delete portrait's scientific part in the xml if you haven't and uncomment this
+//        int maxButtons = 7;
+//        if (isLandscape)
+//            maxButtons = 23
 
         int  maxButtons = 23; //comment or delete this when you uncomment the above
 
@@ -193,6 +193,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 isClearEntry = false;
                 clearButton.setText("AC");
+                String operatorWithParen = addRightParen(textView.getText().toString());
+                textView.setText(operatorWithParen);
                 String expression = textView.getText().toString();
                 historyView.setText(expression + "=");
                 expression = parseForCalculation(expression);
@@ -298,6 +300,17 @@ public class MainActivity extends AppCompatActivity {
             return s += "(";
         return s;
     }
+
+    private String addRightParen(String s) {
+        if (s.contains("√") || s.contains("³√") || s.contains("sin")
+                || s.contains("cos") || s.contains("tan") || s.contains("sin⁻¹")
+                || s.contains("cos⁻¹") || s.contains("tan⁻¹") || s.contains("log₁₀")
+                || s.contains("log₂") || s.contains("ln"))
+            return s += ")";
+        return s;
+    }
+
+
 
     //using exp4j's custom operator creation
     private static void initFactorialOperator() {
