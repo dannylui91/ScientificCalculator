@@ -195,12 +195,14 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 isClearEntry = false;
                 clearButton.setText("AC");
                 String operatorWithParen = addRightParen(textView.getText().toString());
                 textView.setText(operatorWithParen);
                 String expression = textView.getText().toString();
                 if (expression.equals("sin()")) {
+
                     seePope();
                 }
                 if (expression.equals("√(666)")) {

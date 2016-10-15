@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="#50ccffff"
     tools:context="nyc.ac3.scientificcalculator.MainActivity">
 
     <TextView
@@ -21,7 +22,7 @@
         android:maxLines="1"
         android:maxLength="21"
         android:textSize="20dp"
-        android:background="#1000F00F"/>
+        android:background="#40ccf1ff"/>
     <TextView
         android:id="@+id/text_view"
         android:layout_width="490dp"
@@ -31,7 +32,7 @@
         android:maxLines="1"
         android:maxLength="21"
         android:textSize="30dp"
-        android:background="#05000000" />
+        android:background="#40ccf1ff" />
 
     <RelativeLayout
         android:id="@+id/container_layout"
@@ -49,102 +50,117 @@
                 android:id="@+id/button_sqrt"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="√"/>
+                android:text="√"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_cbrt"
                 android:layout_toRightOf="@id/button_sqrt"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="³√"/>
+                android:text="³√"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_power"
                 android:layout_toRightOf="@id/button_cbrt"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="^"/>
+                android:text="^"
+                android:theme="@style/ButtonDarkBlue"/>
 
             <Button
                 android:id="@+id/button_tan"
                 android:layout_below="@id/button_sqrt"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="tan"/>
+                android:text="tan"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_atan"
                 android:layout_below="@id/button_cbrt"
                 android:layout_toRightOf="@id/button_tan"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="tan⁻¹"/>
+                android:text="tan⁻¹"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_log10"
                 android:layout_below="@id/button_power"
                 android:layout_toRightOf="@id/button_atan"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="log₁₀"/>
+                android:text="log₁₀"
+                android:theme="@style/ButtonDarkBlue"/>
 
             <Button
                 android:id="@+id/button_cos"
                 android:layout_below="@id/button_tan"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="cos"/>
+                android:text="cos"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_acos"
                 android:layout_below="@id/button_atan"
                 android:layout_toRightOf="@id/button_cos"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="cos⁻¹"/>
+                android:text="cos⁻¹"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_log2"
                 android:layout_below="@id/button_log10"
                 android:layout_toRightOf="@id/button_acos"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="log₂"/>
+                android:text="log₂"
+                android:theme="@style/ButtonDarkBlue"/>
 
             <Button
                 android:id="@+id/button_sin"
                 android:layout_below="@id/button_cos"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="sin"/>
+                android:text="sin"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_asin"
                 android:layout_below="@id/button_acos"
                 android:layout_toRightOf="@id/button_sin"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="sin⁻¹"/>
+                android:text="sin⁻¹"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_ln"
                 android:layout_below="@id/button_log2"
                 android:layout_toRightOf="@id/button_asin"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="ln"/>
+                android:text="ln"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_factorial"
                 android:layout_below="@id/button_sin"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="!"/>
+                android:text="!"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_pi"
                 android:layout_below="@id/button_asin"
                 android:layout_toRightOf="@id/button_factorial"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="π"/>
+                android:text="π"
+                android:theme="@style/ButtonDarkBlue"/>
             <Button
                 android:id="@+id/button_e"
                 android:layout_below="@id/button_ln"
                 android:layout_toRightOf="@id/button_pi"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="e"/>
+                android:text="e"
+                android:theme="@style/ButtonDarkBlue"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -157,133 +173,153 @@
                 android:id="@+id/button_paren_left"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="("/>
+                android:text="("
+                android:theme="@style/ButtonBlue"/>
             <Button
                 android:id="@+id/button_paren_right"
                 android:layout_toRightOf="@id/button_paren_left"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text=")"/>
+                android:text=")"
+                android:theme="@style/ButtonBlue"/>
             <Button
                 android:id="@+id/button10"
                 android:layout_toRightOf="@id/button_paren_right"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="Ans"/>
+                android:text="Ans"
+                android:theme="@style/ButtonBlue"/>
             <Button
                 android:id="@+id/button_clear"
                 android:layout_toRightOf="@id/button10"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="AC"/>
+                android:text="AC"
+                android:theme="@style/ButtonBlue"/>
             <Button
                 android:id="@+id/button7"
                 android:layout_below="@id/button_paren_left"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="7"/>
+                android:text="7"
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button8"
                 android:layout_below="@id/button_paren_right"
                 android:layout_toRightOf="@id/button7"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="8"/>
+                android:text="8"
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button9"
                 android:layout_below="@id/button10"
                 android:layout_toRightOf="@id/button8"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="9"/>
+                android:text="9"
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button_divide"
                 android:layout_below="@id/button_clear"
                 android:layout_toRightOf="@id/button9"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="÷"/>
+                android:text="÷"
+                android:theme="@style/ButtonBlue"/>
             <Button
                 android:id="@+id/button4"
                 android:layout_below="@id/button7"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="4" />
+                android:text="4"
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button5"
                 android:layout_below="@id/button8"
                 android:layout_toRightOf="@id/button4"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="5"/>
+                android:text="5"
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button6"
                 android:layout_below="@id/button9"
                 android:layout_toRightOf="@id/button5"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="6"/>
+                android:text="6"
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button_times"
                 android:layout_below="@id/button_divide"
                 android:layout_toRightOf="@id/button6"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="×"/>
+                android:text="×"
+                android:theme="@style/ButtonBlue"/>
             <Button
                 android:id="@+id/button1"
                 android:layout_below="@id/button4"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="1" />
+                android:text="1"
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button2"
                 android:layout_below="@id/button5"
                 android:layout_toRightOf="@id/button1"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="2"/>
+                android:text="2"
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button3"
                 android:layout_below="@id/button6"
                 android:layout_toRightOf="@id/button2"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="3"/>
+                android:text="3"
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button_minus"
                 android:layout_below="@id/button_times"
                 android:layout_toRightOf="@id/button3"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="-"/>
+                android:text="-"
+                android:theme="@style/ButtonBlue"/>
             <Button
                 android:id="@+id/button0"
                 android:layout_below="@id/button1"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="0"/>
+                android:text="0"
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button_point"
                 android:layout_below="@id/button2"
                 android:layout_toRightOf="@id/button0"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="."/>
+                android:text="."
+                android:theme="@style/ButtonLightBlue"/>
             <Button
                 android:id="@+id/button_equal"
                 android:layout_below="@id/button3"
                 android:layout_toRightOf="@id/button_point"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="="/>
+                android:text="="
+                android:theme="@style/ButtonOrange"/>
             <Button
                 android:id="@+id/button_plus"
                 android:layout_below="@id/button_minus"
                 android:layout_toRightOf="@id/button_equal"
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="+"/>
+                android:text="+"
+                android:theme="@style/ButtonBlue"/>
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>
