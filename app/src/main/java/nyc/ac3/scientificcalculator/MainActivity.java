@@ -16,12 +16,9 @@ public class MainActivity extends AppCompatActivity {
     private static double ans = 0;
     private static Operator factorial;
 
-
     TextView textView;
     TextView historyView;
     Button clearButton;
-    private int leftParensCount;
-    private int rightParensCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -302,6 +299,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String addRightParen(String s) {
+        int leftParensCount = 0;
+        int rightParensCount = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
                 leftParensCount++;
@@ -315,7 +314,6 @@ public class MainActivity extends AppCompatActivity {
             }
         return s;
     }
-
 
     //using exp4j's custom operator creation
     private static void initFactorialOperator() {
