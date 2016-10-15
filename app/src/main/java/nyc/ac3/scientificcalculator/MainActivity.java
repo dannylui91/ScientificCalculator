@@ -1,6 +1,7 @@
 package nyc.ac3.scientificcalculator;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean isClearEntry;
     private static double ans = 0;
     private static Operator factorial;
+    private final static String KEY_FOR_TEXT_VIEW = "text_key";
+    private final static String KEY_FOR_HISTORY_VIEW = "history_key";
 
     TextView textView;
     TextView historyView;
@@ -26,14 +29,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//         TODO: for when we switch from portrait to landscape uncomment this and delete the scientific part in xml portrait
-//        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-//            isLandscape = true;
-//        else
-//            isLandscape = false;
+
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            isLandscape = true;
+        else
+            isLandscape = false;
 
         historyView = (TextView) findViewById(R.id.history_view);
         textView = (TextView) findViewById(R.id.text_view);
+
+        // Check whether we're recreating a previously destroyed instance
+        if (savedInstanceState != null) {
+            // Restore value of members from saved state
+            historyView.setText(savedInstanceState.getString(KEY_FOR_HISTORY_VIEW));
+            textView.setText(savedInstanceState.getString(KEY_FOR_TEXT_VIEW));
+        } else {
+            // Probably initialize members with default values for a new instance
+        }
 
         initFactorialOperator(); //to do factorial operation
 
@@ -67,13 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
     //when every button except buttons 0->9 and Ans are pressed
     private void initOperationButtons() {
-//        TODO: for when we switch from portrait to landscape
-//          delete portrait's scientific part in the xml if you haven't and uncomment this
-//        int maxButtons = 7;
-//        if (isLandscape)
-//            maxButtons = 23
-
-        int maxButtons = 23; //comment or delete this when you uncomment the above
+        int maxButtons = 7;
+        if (isLandscape)
+            maxButtons = 22;
 
         for (int i = 0; i < maxButtons; i++) {
             String buttonID = null;
@@ -104,48 +112,45 @@ public class MainActivity extends AppCompatActivity {
                     buttonID = "button_factorial";
                     break;
                 case 8:
-                    buttonID = "button_mod";
-                    break;
-                case 9:
                     buttonID = "button_pi";
                     break;
-                case 10:
+                case 9:
                     buttonID = "button_e";
                     break;
-                case 11:
+                case 10:
                     buttonID = "button_sqrt";
                     break;
-                case 12:
+                case 11:
                     buttonID = "button_tan";
                     break;
-                case 13:
+                case 12:
                     buttonID = "button_cos";
                     break;
-                case 14:
+                case 13:
                     buttonID = "button_sin";
                     break;
-                case 15:
+                case 14:
                     buttonID = "button_cbrt";
                     break;
-                case 16:
+                case 15:
                     buttonID = "button_atan";
                     break;
-                case 17:
+                case 16:
                     buttonID = "button_acos";
                     break;
-                case 18:
+                case 17:
                     buttonID = "button_asin";
                     break;
-                case 19:
+                case 18:
                     buttonID = "button_power";
                     break;
-                case 20:
+                case 19:
                     buttonID = "button_log10";
                     break;
-                case 21:
+                case 20:
                     buttonID = "button_log2";
                     break;
-                case 22:
+                case 21:
                     buttonID = "button_ln";
                     break;
             }
@@ -355,5 +360,14 @@ public class MainActivity extends AppCompatActivity {
     private void seePhilosoraptor() {
         Intent intent = new Intent(getApplicationContext(), EasterEggActivity.class);
         startActivity(intent);
+    }
+
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current game state
+        savedInstanceState.putString(KEY_FOR_HISTORY_VIEW, historyView.getText().toString());
+        savedInstanceState.putString(KEY_FOR_TEXT_VIEW, textView.getText().toString());
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
     }
 }
