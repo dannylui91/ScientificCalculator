@@ -18,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean isClearEntry;
     private static double ans = 0;
     private static Operator factorial;
+    private int clearCnt;
     private final static String KEY_FOR_TEXT_VIEW = "text_key";
     private final static String KEY_FOR_HISTORY_VIEW = "history_key";
+    public final static String KEY_FOR_FRAGMENTS = "fragment_key";
 
     TextView textView;
     TextView historyView;
@@ -203,8 +205,8 @@ public class MainActivity extends AppCompatActivity {
                 if (expression.equals("sin()")) {
                     seePope();
                 }
-                if (expression.equals("√(666)")) {
-                    seePhilosoraptor();
+                if (expression.equals("√(666)") || expression.equals("5+6") || clearCnt > 10) {
+                    seeEggFragment();
                 }
                 historyView.setText(expression + "=");
                 expression = parseForCalculation(expression);
@@ -232,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clearCnt++;
                 if (isClearEntry) {
                     String currentString = textView.getText().toString();
                     if (!currentString.isEmpty()) {
@@ -357,9 +360,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void seePhilosoraptor() {
-        Intent intent = new Intent(getApplicationContext(), EasterEggActivity.class);
-        startActivity(intent);
+    private void seeEggFragment() {
+        if (clearCnt > 10) {
+            Intent intent = new Intent(getApplicationContext(), EasterEggActivity.class);
+            intent.putExtra(KEY_FOR_FRAGMENTS, "clear");
+            startActivity(intent);
+            clearCnt = 0;
+        } else {
+            Intent intent = new Intent(getApplicationContext(), EasterEggActivity.class);
+            intent.putExtra(KEY_FOR_FRAGMENTS, textView.getText().toString());
+            startActivity(intent);
+        }
     }
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
