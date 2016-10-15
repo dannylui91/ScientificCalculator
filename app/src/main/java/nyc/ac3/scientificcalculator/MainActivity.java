@@ -1,5 +1,7 @@
 package nyc.ac3.scientificcalculator;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -193,6 +195,12 @@ public class MainActivity extends AppCompatActivity {
                 String operatorWithParen = addRightParen(textView.getText().toString());
                 textView.setText(operatorWithParen);
                 String expression = textView.getText().toString();
+                if (expression.equals("sin()")) {
+                    seePope();
+                }
+                if (expression.equals("√(666)")) {
+                    seePhilosoraptor();
+                }
                 historyView.setText(expression + "=");
                 expression = parseForCalculation(expression);
                 System.out.println(expression);
@@ -334,5 +342,18 @@ public class MainActivity extends AppCompatActivity {
                 return result;
             }
         };
+    }
+
+    private void seePope() {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        intent.setData(Uri.parse("https://vine.co/v/ei2Zaa9whPx"));
+        startActivity(intent);
+    }
+
+    private void seePhilosoraptor() {
+        Intent intent = new Intent(getApplicationContext(), EasterEggActivity.class);
+        startActivity(intent);
     }
 }
