@@ -9,18 +9,27 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
 
-
 /**
  * Created by huilin on 10/14/16.
  */
 
 public class EasterEggActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.egg_activity);
-        hostFragment(new EggFragment());
+        String trigger = getIntent().getStringExtra(MainActivity.KEY_FOR_FRAGMENTS);
+        switch (trigger) {
+            case "√(666)":
+                hostFragment(new Philosoraptor());
+                break;
+            case "clear":
+                hostFragment(new ClearCalc());
+                break;
+            case "5+6":
+                hostFragment(new BabyCalc());
+                break;
+        }
     }
 
 

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 /**
  * Created by huilin on 10/14/16.
  */
-public class EggFragment extends Fragment {
+public class Philosoraptor extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
